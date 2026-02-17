@@ -1,0 +1,21 @@
+---
+import BusinessLayout from '../../layouts/BusinessLayout.astro';
+import { getBusinessConfig, getAllBusinessSlugs } from '../../utils/getBusinessConfig';
+
+export async function getStaticPaths() {
+  const slugs = getAllBusinessSlugs();
+  return slugs.map(slug => ({
+    params: { business: slug }
+  }));
+}
+
+const { business } = Astro.params;
+const locale = 'en';
+const config = getBusinessConfig(business!, locale);
+
+if (!config) {
+  return Astro.redirect('/404');
+}
+---
+
+<BusinessLayout config={config} locale={locale} />

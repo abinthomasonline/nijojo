@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Custom Colors for nijojo.com */
+@theme {
+  --color-primary: #282C6D;
+  --color-primary-light: #3a3f8f;
+  --color-primary-dark: #1a1d4a;
+
+  --color-secondary: #10B981;
+  --color-secondary-light: #34D399;
+  --color-secondary-dark: #059669;
+
+  --color-accent-whatsapp: #25D366;
+  --color-accent-facebook: #1877F2;
+}

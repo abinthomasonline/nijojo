@@ -1,0 +1,22 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { StructuredData } from '../types/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: string;
+  structuredData?: StructuredData | StructuredData[];
+}
+
+const { title, description, locale = 'en', structuredData } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  structuredData={structuredData}
+>
+  <slot />
+</BaseLayout>

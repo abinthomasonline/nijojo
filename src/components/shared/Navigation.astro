@@ -1,0 +1,128 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { businesses } from '../../config/site';
+
+interface Props {
+  currentPath: string;
+  locale?: string;
+}
+
+const { currentPath, locale = 'en' } = Astro.props;
+
+const homeUrl = locale === 'en' ? '/' : `/${locale}`;
+---
+
+<nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-primary/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo/Home Link -->
+      <div class="flex items-center">
+        <a href={homeUrl} class="text-2xl font-bold text-primary hover:text-primary-light transition-colors">
+          Nijo Johny
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a
+          href={homeUrl}
+          class={`px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
+            currentPath === homeUrl
+              ? 'bg-primary text-white'
+              : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+          }`}
+        >
+          Home
+        </a>
+
+        {businesses.map(business => {
+          const businessUrl = locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`;
+          const isActive = currentPath.includes(`/${business.slug}`);
+
+          return (
+            <a
+              href={businessUrl}
+              class={`px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
+                isActive
+                  ? 'bg-primary text-white'
+                  : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+              }`}
+            >
+              {business.name}
+            </a>
+          );
+        })}
+
+        <!-- Language Switcher -->
+        <LanguageSwitcher currentLocale={locale} currentPath={currentPath} />
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center gap-3">
+        <LanguageSwitcher currentLocale={locale} currentPath={currentPath} />
+        <button
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a
+        href={homeUrl}
+        class={`block px-3 py-2 rounded-md text-base font-semibold ${
+          currentPath === homeUrl
+            ? 'bg-primary text-white'
+            : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+        }`}
+      >
+        Home
+      </a>
+
+      {businesses.map(business => {
+        const businessUrl = locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`;
+        const isActive = currentPath.includes(`/${business.slug}`);
+
+        return (
+          <a
+            href={businessUrl}
+            class={`block px-3 py-2 rounded-md text-base font-semibold ${
+              isActive
+                ? 'bg-primary text-white'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+            }`}
+          >
+            {business.name}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    if (isHidden) {
+      menu?.classList.remove('hidden');
+      button?.setAttribute('aria-expanded', 'true');
+    } else {
+      menu?.classList.add('hidden');
+      button?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

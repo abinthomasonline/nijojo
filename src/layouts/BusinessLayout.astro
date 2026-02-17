@@ -1,0 +1,107 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/shared/Navigation.astro';
+import HeroSection from '../components/business/HeroSection.astro';
+import FacebookEmbed from '../components/business/FacebookEmbed.astro';
+import ServicesGrid from '../components/business/ServicesGrid.astro';
+import ContactSection from '../components/business/ContactSection.astro';
+import type { BusinessConfig } from '../types/business';
+import type { StructuredData } from '../types/seo';
+
+interface Props {
+  config: BusinessConfig;
+  locale?: string;
+}
+
+const { config, locale = 'en' } = Astro.props;
+
+// Sort sections by order
+const sortedSections = [...config.sections]
+  .filter(section => section.enabled)
+  .sort((a, b) => a.order - b.order);
+
+// Generate structured data for LocalBusiness
+const structuredData: StructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  'name': config.name,
+  'description': config.description,
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': config.contact.address.split(',')[0],
+    'addressLocality': 'Kothamangalam',
+    'addressRegion': 'Kerala',
+    'addressCountry': 'IN'
+  },
+  'telephone': config.contact.phone,
+  'email': config.contact.email,
+  'url': `https://nijojo.com/${config.slug}`,
+  ...(config.contact.workingHours && {
+    'openingHours': config.contact.workingHours
+  }),
+  ...(config.social?.facebook && {
+    'sameAs': [config.social.facebook]
+  })
+};
+---
+
+<BaseLayout
+  title={`${config.name} - ${config.tagline}`}
+  description={config.description}
+  locale={locale}
+  structuredData={structuredData}
+  ogImage={config.heroImage || config.logo}
+>
+  <Navigation currentPath={Astro.url.pathname} locale={locale} />
+
+  <div class="min-h-screen bg-gray-50">
+    {sortedSections.map(section => {
+      switch (section.type) {
+        case 'hero':
+          return (
+            <HeroSection
+              title={config.name}
+              subtitle={config.tagline}
+              description={config.description}
+              logo={config.logo}
+              ctaText={locale === 'ml' ? 'വാട്ട്‌സ്ആപ്പിൽ ബന്ധപ്പെടുക' : 'Contact on WhatsApp'}
+              ctaLink={locale === 'ml'
+                ? `https://wa.me/${config.contact.whatsapp?.replace(/\+/g, '')}?text=${encodeURIComponent(`ഹായ് നിജോ, ${config.name} സംബന്ധിച്ച് കൂടുതൽ അറിയാൻ ആഗ്രഹിക്കുന്നു`)}`
+                : `https://wa.me/${config.contact.whatsapp?.replace(/\+/g, '')}?text=Hi%20Nijo,%20I'd%20like%20to%20know%20more%20about%20${encodeURIComponent(config.name)}`}
+              locale={locale}
+            />
+          );
+
+        case 'facebook':
+          return config.social?.facebook ? (
+            <FacebookEmbed
+              pageUrl={section.config?.pageUrl || config.social.facebook}
+              showTimeline={section.config?.showTimeline ?? true}
+            />
+          ) : null;
+
+        case 'services':
+          return (
+            <ServicesGrid
+              services={config.services}
+              businessSlug={config.slug}
+              locale={locale}
+            />
+          );
+
+        case 'contact':
+          return (
+            <ContactSection
+              contact={config.contact}
+              showMap={section.config?.showMap ?? false}
+              mapUrl={config.contact.mapUrl}
+              locale={locale}
+            />
+          );
+
+        default:
+          return null;
+      }
+    })}
+  </div>
+</BaseLayout>

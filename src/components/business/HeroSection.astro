@@ -1,0 +1,40 @@
+---
+import CTAButton from '../shared/CTAButton.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  logo?: string;
+  ctaText: string;
+  ctaLink: string;
+  locale?: string;
+}
+
+const { title, subtitle, description, logo, ctaText, ctaLink, locale = 'en' } = Astro.props;
+---
+
+<div class="relative bg-primary">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark opacity-95"></div>
+  <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+    {logo && (
+      <div class="mb-8 inline-block bg-white rounded-lg p-4 shadow-xl border-2 border-white/20">
+        <img src={logo} alt={`${title} logo`} class="h-16 w-auto" />
+      </div>
+    )}
+    <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg">
+      {title}
+    </h1>
+    <p class="mt-4 text-2xl text-secondary font-bold drop-shadow-md">
+      {subtitle}
+    </p>
+    <p class="mt-6 text-xl text-white max-w-3xl leading-relaxed drop-shadow-md">
+      {description}
+    </p>
+    <div class="mt-10">
+      <CTAButton href={`https://wa.me/919847461054?text=Hi%20Nijo,%20I'd%20like%20to%20know%20more%20about%20${encodeURIComponent(title)}`} variant="whatsapp" size="lg">
+        {ctaText}
+      </CTAButton>
+    </div>
+  </div>
+</div>

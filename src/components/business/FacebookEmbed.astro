@@ -1,0 +1,81 @@
+---
+interface Props {
+  pageUrl: string;
+  showTimeline?: boolean;
+  height?: number;
+}
+
+const {
+  pageUrl,
+  showTimeline = true,
+  height = 500
+} = Astro.props;
+---
+
+<div class="bg-gradient-to-b from-white to-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
+        Follow Us on Facebook
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent-facebook mx-auto mb-4"></div>
+      <p class="mt-4 text-xl text-gray-700">
+        Stay updated with our latest news, announcements, and updates
+      </p>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class="lg:hidden flex justify-center">
+      <div
+        class="fb-page"
+        data-href={pageUrl}
+        data-tabs={showTimeline ? 'timeline' : ''}
+        data-width="340"
+        data-height={height}
+        data-lazy="true"
+        data-small-header="true"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="false"
+      >
+        <blockquote cite={pageUrl} class="fb-xfbml-parse-ignore">
+          <a href={pageUrl}>Facebook Page</a>
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div class="hidden lg:flex justify-center">
+      <div
+        class="fb-page"
+        data-href={pageUrl}
+        data-tabs={showTimeline ? 'timeline' : ''}
+        data-width="500"
+        data-height={height}
+        data-lazy="true"
+        data-small-header="true"
+        data-adapt-container-width="false"
+        data-hide-cover="false"
+        data-show-facepile="false"
+      >
+        <blockquote cite={pageUrl} class="fb-xfbml-parse-ignore">
+          <a href={pageUrl}>Facebook Page</a>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href={pageUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent-facebook hover:bg-blue-700 transition-colors"
+      >
+        Visit Our Facebook Page
+        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

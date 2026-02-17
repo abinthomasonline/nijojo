@@ -1,0 +1,39 @@
+---
+import { languages } from '../../i18n/ui';
+
+interface Props {
+  currentLocale: string;
+  currentPath: string;
+}
+
+const { currentLocale, currentPath } = Astro.props;
+
+// Generate alternate URL
+const alternateLocale = currentLocale === 'en' ? 'ml' : 'en';
+const alternatePath = currentLocale === 'en'
+  ? `/ml${currentPath}`
+  : currentPath.replace('/ml', '') || '/';
+---
+
+<div class="flex items-center gap-2 bg-white rounded-lg shadow-lg p-1 border-2 border-gray-200">
+  <a
+    href={currentLocale === 'en' ? currentPath : alternatePath}
+    class={`px-4 py-2 rounded-md text-sm font-bold transition-all ${
+      currentLocale === 'en'
+        ? 'bg-primary text-white shadow-md'
+        : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+    }`}
+  >
+    {languages.en}
+  </a>
+  <a
+    href={currentLocale === 'ml' ? currentPath : alternatePath}
+    class={`px-4 py-2 rounded-md text-sm font-bold transition-all ${
+      currentLocale === 'ml'
+        ? 'bg-primary text-white shadow-md'
+        : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+    }`}
+  >
+    {languages.ml}
+  </a>
+</div>

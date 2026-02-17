@@ -1,0 +1,230 @@
+I want you to help me architect and scaffold a production-ready website using Astro.
+
+Project Overview
+
+We are building a personal brand + business hub website for Nijo Johny.
+
+Domain: nijojo.com
+
+Deployment target: GitHub Pages (static site)
+
+Primary goal: Lead generation
+
+Secondary goal: Strong SEO
+
+Framework: Astro (latest stable version)
+
+Output: Clean, fresh implementation (do not reuse legacy code directly)
+
+This will be a multilingual website supporting:
+
+English (default)
+
+Malayalam
+
+Use best practices for:
+
+SEO (meta tags, OpenGraph, sitemap, robots.txt, semantic HTML)
+
+Performance (Astro static build optimizations)
+
+Accessibility
+
+Clean component architecture
+
+Easy future extensibility
+
+Site Structure
+1. Home Page (/)
+
+This is the main personal landing page for Nijo Johny.
+
+It must include:
+
+Professional photo (placeholder for now)
+
+Short professional bio
+
+Contact section:
+
+Phone
+
+Email
+
+WhatsApp (click-to-chat link)
+
+Links to 3 businesses:
+
+/emithram
+
+/universal-tax
+
+/insurance
+
+The homepage should clearly position him as the owner of the three businesses and encourage contact.
+
+2. Business Subroutes
+
+Each business should be available as:
+
+nijojo.com/emithram
+
+nijojo.com/universal-tax
+
+nijojo.com/insurance
+
+Each business should follow a modular, configurable layout system because:
+
+Some sections are optional
+
+More sections may be added in the future
+
+Design a reusable BusinessLayout system with configurable sections.
+
+Business Sections (Required Structure)
+
+Each business may include the following sections:
+
+1. Home / Landing Section
+
+What the business is about
+
+CTA buttons:
+
+WhatsApp
+
+Phone
+
+2. Facebook Page Embed (Optional)
+
+Required only for emithram
+
+Should be easily toggleable via config
+
+3. Services Section
+
+Card-based layout
+
+Initially show limited services
+
+“View More” / Expand button to reveal all services
+
+Each service should link to:
+
+/business-name/services/service-slug
+
+Create a scalable structure for service pages.
+
+4. Contact Section
+
+Must include:
+
+Google Maps embed
+
+Email
+
+Phone
+
+Address
+
+Legacy Code Reference
+
+There is an existing website for emithram located at:
+
+/legacy-code
+
+You may:
+
+Refer to it only for content and feature ideas
+
+Extract structure, service lists, etc.
+
+You MUST NOT:
+
+Copy-paste code from it
+
+Assume it works in Astro
+
+We want a clean, modern rebuild.
+
+Technical Requirements
+
+Use Astro with:
+
+File-based routing
+
+Layout components
+
+Shared components for:
+
+CTA buttons
+
+Service cards
+
+Contact block
+
+Section wrapper
+
+Content-driven configuration (preferably JSON or TypeScript config files per business)
+
+The architecture must:
+
+Allow enabling/disabling sections per business via config
+
+Allow easy addition of new sections in future
+
+Allow adding new businesses easily
+
+Support multilingual content cleanly (no messy duplication)
+
+Implement i18n properly:
+
+English as default
+
+Malayalam translations
+
+URL-based language handling preferred (e.g. /ml/...)
+
+SEO Requirements
+
+Implement:
+
+Per-page meta title & description
+
+OpenGraph tags
+
+Structured data (JSON-LD for local business if relevant)
+
+Sitemap generation
+
+Clean semantic HTML
+
+Proper heading hierarchy
+
+Deliverables
+
+Folder structure
+
+High-level architecture explanation
+
+Component breakdown
+
+Example config for at least one business
+
+i18n implementation strategy
+
+Sample code for:
+
+Layout
+
+Business page
+
+Service card
+
+Config-driven section rendering
+
+Instructions for deploying to GitHub Pages
+
+Design this as a production-grade foundation that can scale cleanly.
+
+Do NOT oversimplify. Think like a senior frontend architect.

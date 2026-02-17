@@ -1,0 +1,64 @@
+---
+import type { PersonInfo } from '../../types/business';
+import CTAButton from '../shared/CTAButton.astro';
+
+interface Props {
+  person: PersonInfo;
+  locale?: string;
+}
+
+const { person, locale = 'en' } = Astro.props;
+---
+
+<div class="relative bg-gradient-to-br from-primary to-primary-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image first on mobile, second on desktop -->
+      <div class="flex justify-center lg:justify-end lg:order-2">
+        <div class="relative">
+          {person.photo ? (
+            <img
+              src={person.photo}
+              alt={person.name}
+              class="rounded-lg shadow-2xl w-full max-w-md border-4 border-white/20"
+            />
+          ) : (
+            <div class="bg-gray-300 rounded-lg shadow-2xl w-full max-w-md h-96 flex items-center justify-center border-4 border-white/20">
+              <span class="text-gray-700 text-lg font-semibold">[Photo Placeholder]</span>
+            </div>
+          )}
+        </div>
+      </div>
+      <!-- Text content second on mobile, first on desktop -->
+      <div class="lg:order-1">
+        <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl drop-shadow-lg">
+          {person.name}
+        </h1>
+        <p class="mt-4 text-2xl text-secondary font-bold drop-shadow-md">
+          {person.title}
+        </p>
+        <p class="mt-6 text-xl text-white leading-relaxed drop-shadow-md">
+          {person.bio}
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          {person.contact.whatsapp && (
+            <CTAButton
+              href={locale === 'ml' ? `https://wa.me/919847461054?text=${encodeURIComponent('ഹായ് നിജോ')}` : `https://wa.me/919847461054?text=Hi%20Nijo`}
+              variant="whatsapp"
+              size="lg"
+            >
+              {locale === 'ml' ? 'വാട്ട്‌സ്ആപ്പിൽ ബന്ധപ്പെടുക' : 'Contact on WhatsApp'}
+            </CTAButton>
+          )}
+          <CTAButton
+            href={`tel:${person.contact.phone}`}
+            variant="phone"
+            size="lg"
+          >
+            {locale === 'ml' ? 'ഇപ്പോൾ വിളിക്കുക' : 'Call Now'}
+          </CTAButton>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+---
+import BusinessCard from './BusinessCard.astro';
+import { businesses } from '../../config/site';
+import { businessesMl } from '../../config/site.ml';
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = 'en' } = Astro.props;
+const businessesData = locale === 'ml' ? businessesMl : businesses;
+
+const translations = {
+  en: {
+    heading: 'My Services',
+    subheading: 'From e-Governance Services to Tax, Accounting, and Insurance — Trusted Support for Every Need.'
+  },
+  ml: {
+    heading: 'എന്റെ സേവനങ്ങൾ',
+    subheading: 'ഇ-ഗവേണൻസ് മുതൽ നികുതി, അക്കൗണ്ടിംഗ്, ഇൻഷുറൻസ് വരെ — നിങ്ങളുടെ എല്ലാ ആവശ്യങ്ങൾക്കും വിശ്വസനീയമായ പിന്തുണ.'
+  }
+};
+
+const t = translations[locale as keyof typeof translations] || translations.en;
+---
+
+<div class="bg-gradient-to-b from-gray-50 to-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-extrabold text-gray-900 sm:text-6xl mb-4">
+        {t.heading}
+      </h2>
+      <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+      <p class="mt-4 text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed">
+        {t.subheading}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {businessesData.map(business => (
+        <BusinessCard
+          name={business.name}
+          slug={business.slug}
+          shortDescription={business.shortDescription}
+          locale={locale}
+        />
+      ))}
+    </div>
+  </div>
+</div>

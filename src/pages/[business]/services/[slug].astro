@@ -1,0 +1,32 @@
+---
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import { getAllBusinessConfigs } from '../../../utils/getBusinessConfig';
+
+export async function getStaticPaths() {
+  const locale = 'en';
+  const businesses = getAllBusinessConfigs(locale);
+  const paths: any[] = [];
+
+  businesses.forEach(business => {
+    business.services.forEach(service => {
+      paths.push({
+        params: {
+          business: business.slug,
+          slug: service.slug
+        },
+        props: {
+          service,
+          business
+        }
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { service, business } = Astro.props;
+const locale = 'en';
+---
+
+<ServiceLayout service={service} business={business} locale={locale} />

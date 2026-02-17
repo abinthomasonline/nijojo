@@ -1,0 +1,225 @@
+{
+  "ui": {
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "buttons": {
+      "learnMore": "Learn More",
+      "viewAll": "View All Services",
+      "contactWhatsApp": "Contact on WhatsApp",
+      "call": "Call Now",
+      "email": "Send Email",
+      "chatOnWhatsApp": "Chat on WhatsApp",
+      "followOnFacebook": "Follow us on Facebook"
+    },
+    "contact": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "workingHours": "Working Hours",
+      "contactInformation": "Contact Information",
+      "getInTouch": "Get in touch with us for any inquiries"
+    },
+    "footer": {
+      "copyright": "© 2026 Nijo Johny. All rights reserved."
+    },
+    "service": {
+      "readyToGetStarted": "Ready to get started?",
+      "backTo": "Back to"
+    }
+  },
+  "homePage": {
+    "personInfo": {
+      "name": "Nijo Johny",
+      "title": "E-Governance, Tax, and Insurance Solutions",
+      "bio": "I help individuals and businesses navigate e-governance, taxation, and insurance with clarity, trust, and professionalism."
+    },
+    "myServices": {
+      "heading": "My Services",
+      "subheading": "From e-Governance Services to Tax, Accounting, and Insurance — Trusted Support for Every Need."
+    },
+    "businessCards": {
+      "emithram": {
+        "name": "e-Mithram",
+        "shortDescription": "Fast, reliable access to essential government services — made simple and hassle-free."
+      },
+      "universalTax": {
+        "name": "Universal Tax",
+        "shortDescription": "Accurate compliance, smart accounting, and stress-free tax management for individuals and businesses."
+      },
+      "insurance": {
+        "name": "Insurance Services",
+        "shortDescription": "Secure your life, health, and assets with trusted insurance guidance and complete coverage solutions."
+      }
+    }
+  },
+  "businesses": {
+    "emithram": {
+      "name": "e-Mithram",
+      "tagline": "Your Trusted Digital Service Partner",
+      "description": "Reliable and efficient digital services in Kothamangalam. From government to private, we take care of everything with attention and professionalism.",
+      "services": [
+        {
+          "title": "Passport Services",
+          "description": "New passport applications, renewals, and corrections with expert guidance through the entire process.",
+          "detailContent": "We provide complete assistance for all passport-related services including new applications, renewals, corrections, and address changes. Our experienced team guides you through the entire process."
+        },
+        {
+          "title": "Ration Card Services",
+          "description": "Apply for new ration cards, update family details, and manage your food security entitlements.",
+          "detailContent": "Get help with new ration card applications, adding or removing family members, address changes, and all other ration card related services."
+        },
+        {
+          "title": "Pan Card Services",
+          "description": "PAN card applications, corrections, and linking with Aadhaar for seamless financial transactions.",
+          "detailContent": "Apply for new PAN cards, make corrections to existing cards, link with Aadhaar, and download e-PAN cards with our assistance."
+        },
+        {
+          "title": "Caste Certificate Services",
+          "description": "Apply for caste certificates, corrections, and verifications for educational and employment benefits.",
+          "detailContent": "We assist with caste certificate applications, corrections, renewals, and verifications required for educational institutions and government schemes."
+        },
+        {
+          "title": "Income Certificate Services",
+          "description": "Income certificates for educational institutions, government schemes, and financial assistance.",
+          "detailContent": "Get income certificates for educational purposes, government schemes, scholarships, and other official requirements."
+        },
+        {
+          "title": "One and Same Certificate Services",
+          "description": "Identity verification certificates confirming different name variations belong to the same person.",
+          "detailContent": "Obtain certificates that verify different variations of your name refer to the same person, essential for legal and official purposes."
+        },
+        {
+          "title": "Encumbrance Certificate Services",
+          "description": "Property encumbrance certificates for real estate transactions and legal verifications.",
+          "detailContent": "Get encumbrance certificates (EC) for property transactions, showing the history of transactions on a property."
+        },
+        {
+          "title": "Possession Certificate Services",
+          "description": "Land possession certificates for property ownership verification and legal documentation.",
+          "detailContent": "Apply for possession certificates to verify land ownership and establish legal documentation."
+        },
+        {
+          "title": "Property Tax Services",
+          "description": "Property tax assessment, payment, and certificate services for all types of properties.",
+          "detailContent": "We help with property tax assessment, online payment, and obtaining tax payment certificates."
+        },
+        {
+          "title": "Land Tax Services",
+          "description": "Land tax assessment, payment, and certificate services for agricultural and non-agricultural land.",
+          "detailContent": "Get assistance with land tax assessment, payment, and certificates for agricultural and non-agricultural properties."
+        },
+        {
+          "title": "Mini ATM Services",
+          "description": "Cash withdrawal, balance inquiry, and money transfer services at your convenience.",
+          "detailContent": "Access mini ATM services for cash withdrawal, balance inquiry, and fund transfers without visiting a bank."
+        },
+        {
+          "title": "Insurance Services",
+          "description": "Life, health, and vehicle insurance policies with personalized coverage recommendations.",
+          "detailContent": "Explore various insurance options including life, health, and vehicle insurance with expert guidance."
+        },
+        {
+          "title": "Bill Payment Services",
+          "description": "Utility bill payments including electricity, water, gas, and mobile recharge services.",
+          "detailContent": "Pay your utility bills including electricity, water, gas, mobile recharge, and DTH services at our center."
+        }
+      ]
+    },
+    "universalTax": {
+      "name": "Universal Tax",
+      "tagline": "Comprehensive Tax, Compliance, and Financial Solutions for Individuals and Businesses",
+      "description": "At Universal Tax Solutions, we provide end-to-end support for tax filing, statutory compliance, accounting, and business registrations. Our goal is to simplify complex regulations, ensure timely compliance, and help you focus on growing your business with confidence.",
+      "services": [
+        {
+          "title": "GST Registration",
+          "description": "Get your business registered under GST smoothly and without unnecessary delays.",
+          "detailContent": "We assist startups, traders, and service providers with complete GST registration support. From documentation to application filing and follow-ups, we ensure a hassle-free process so your business becomes fully compliant and ready to operate legally."
+        },
+        {
+          "title": "GST Filing",
+          "description": "Ensure accurate and timely GST return filing to avoid penalties and compliance issues.",
+          "detailContent": "Our team manages monthly, quarterly, and annual GST returns with precision and consistency. We reconcile sales and purchase data, identify mismatches, and ensure your filings are accurate, helping you stay compliant and stress-free."
+        },
+        {
+          "title": "Income Tax Filing",
+          "description": "Professional income tax return filing with proper tax planning and compliance.",
+          "detailContent": "We provide income tax filing services for salaried individuals, professionals, and businesses. Our approach focuses on maximizing eligible deductions, minimizing tax liability, and ensuring complete compliance with current regulations."
+        },
+        {
+          "title": "TDS/TCS",
+          "description": "Complete assistance for TDS and TCS calculation, filing, and statutory compliance.",
+          "detailContent": "We handle end-to-end TDS and TCS services including deduction calculation, return filing, and compliance management. Our structured process ensures timely submissions and helps you avoid penalties or notices."
+        },
+        {
+          "title": "Digital Signature",
+          "description": "Obtain a secure and legally valid Digital Signature Certificate with ease.",
+          "detailContent": "We facilitate quick issuance of Digital Signature Certificates (DSC) required for GST, MCA, income tax, and other official filings. Our team guides you through documentation and verification to ensure a smooth and secure process."
+        },
+        {
+          "title": "Accounting",
+          "description": "Maintain accurate financial records to support better business decisions.",
+          "detailContent": "Our accounting services ensure systematic recording, classification, and reporting of financial transactions. We help businesses generate clear financial statements, monitor cash flow, and maintain transparency for long-term growth."
+        },
+        {
+          "title": "Book Keeping",
+          "description": "Keep your financial transactions organized and audit-ready at all times.",
+          "detailContent": "We provide structured bookkeeping services to record daily transactions accurately and consistently. Proper bookkeeping ensures smooth tax filing, simplified audits, and better financial control for your business."
+        },
+        {
+          "title": "Partnership Deed",
+          "description": "Draft legally sound partnership deeds that clearly define roles and responsibilities.",
+          "detailContent": "We assist in drafting and registering partnership deeds tailored to your business requirements. Our service ensures clarity in profit sharing, responsibilities, and dispute resolution, providing a strong legal foundation for your partnership."
+        },
+        {
+          "title": "TAN Registration",
+          "description": "Quick and reliable TAN registration to meet mandatory compliance requirements.",
+          "detailContent": "We help businesses obtain their Tax Deduction and Collection Account Number (TAN) efficiently. Proper TAN registration ensures seamless TDS filing and full compliance with statutory regulations."
+        },
+        {
+          "title": "Internal Auditing",
+          "description": "Strengthen financial discipline through structured internal audit processes.",
+          "detailContent": "Our internal audit services help identify financial risks, operational inefficiencies, and compliance gaps. We provide actionable insights and recommendations to improve internal controls and enhance overall business performance."
+        },
+        {
+          "title": "IE Code Registration",
+          "description": "Register your Import Export Code and start expanding your business globally.",
+          "detailContent": "We provide end-to-end assistance for obtaining your Import Export Code (IEC). From documentation to application submission, we ensure a smooth registration process so you can legally conduct international trade."
+        },
+        {
+          "title": "ESI/PF",
+          "description": "Complete support for ESI and Provident Fund registration and compliance.",
+          "detailContent": "We assist employers with ESI and PF registration, monthly filings, and statutory compliance. Our services ensure you meet labor law requirements while maintaining proper employee benefit records."
+        }
+      ]
+    },
+    "insurance": {
+      "name": "Insurance Services",
+      "tagline": "Comprehensive Insurance Solutions to Protect What Matters Most",
+      "description": "We provide trusted insurance guidance and policy support to help you secure your life, health, and assets. With personalized advice and end-to-end assistance, we ensure you choose the right coverage for your needs and long-term financial security.",
+      "services": [
+        {
+          "title": "Life Insurance - LIC",
+          "description": "Secure your family's financial future with reliable and trusted LIC life insurance plans.",
+          "detailContent": "We help you choose the right LIC life insurance policy based on your financial goals, family needs, and long-term planning objectives. From policy selection and premium guidance to renewals and claim assistance, we provide complete support at every stage."
+        },
+        {
+          "title": "Motor Insurance",
+          "description": "Protect your vehicle against accidents, damages, and unforeseen risks with comprehensive motor insurance.",
+          "detailContent": "We assist with new motor insurance policies as well as timely renewals for cars and two-wheelers. Our service ensures proper coverage, competitive premiums, and smooth claim support so you can drive with confidence and peace of mind."
+        },
+        {
+          "title": "Health Insurance",
+          "description": "Safeguard yourself and your family from rising medical expenses with the right health insurance plan.",
+          "detailContent": "We guide you in selecting suitable health insurance coverage tailored to your medical and financial needs. From policy comparison and enrollment to claim support, we ensure you receive dependable protection during medical emergencies."
+        }
+      ]
+    }
+  },
+  "common": {
+    "address": "Thottyil Building, Near Auto Stand, Thankalam, Kothamangalam, Ernakulam, Kerala 686692",
+    "workingHours": "Monday - Saturday: 9:00 AM - 6:00 PM"
+  }
+}

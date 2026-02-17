@@ -1,0 +1,98 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/shared/Navigation.astro';
+import CTAButton from '../components/shared/CTAButton.astro';
+import type { Service, BusinessConfig } from '../types/business';
+import type { StructuredData } from '../types/seo';
+
+interface Props {
+  service: Service;
+  business: BusinessConfig;
+  locale?: string;
+}
+
+const { service, business, locale = 'en' } = Astro.props;
+
+// Generate structured data for Service
+const structuredData: StructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  'name': service.title,
+  'description': service.description,
+  'provider': {
+    '@type': 'LocalBusiness',
+    'name': business.name,
+    'telephone': business.contact.phone,
+    'address': business.contact.address
+  },
+  'areaServed': {
+    '@type': 'City',
+    'name': 'Kothamangalam'
+  }
+};
+---
+
+<BaseLayout
+  title={`${service.title} - ${business.name}`}
+  description={service.description}
+  locale={locale}
+  structuredData={structuredData}
+>
+  <Navigation currentPath={Astro.url.pathname} locale={locale} />
+
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-primary text-white py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <a
+          href={locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`}
+          class="inline-flex items-center text-white hover:text-secondary mb-4 transition-colors font-semibold"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          {locale === 'ml' ? `${business.name} ലേക്ക് തിരികെ പോകുക` : `Back to ${business.name}`}
+        </a>
+        <div class="flex items-center gap-4 mb-4">
+          <span class="text-5xl">{service.icon}</span>
+          <h1 class="text-4xl font-bold">{service.title}</h1>
+        </div>
+        <p class="text-xl text-white max-w-3xl drop-shadow-md">{service.description}</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="prose prose-lg max-w-none">
+          {service.detailContent ? (
+            <p class="text-gray-700 leading-relaxed">{service.detailContent}</p>
+          ) : (
+            <p class="text-gray-700 leading-relaxed">{service.description}</p>
+          )}
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-12 border-t border-gray-200 pt-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">{locale === 'ml' ? 'ആരംഭിക്കാൻ തയ്യാറാണോ?' : 'Ready to get started?'}</h2>
+          <div class="flex flex-wrap gap-4">
+            <CTAButton
+              href={locale === 'ml'
+                ? `https://wa.me/919847461054?text=${encodeURIComponent(`ഹായ് നിജോ, ${service.title} സേവനം ആവശ്യമാണ്`)}`
+                : `https://wa.me/919847461054?text=Hi%20Nijo,%20I'd%20like%20to%20avail%20your%20${encodeURIComponent(service.title)}%20service`}
+              variant="whatsapp"
+            >
+              {locale === 'ml' ? 'വാട്ട്‌സ്ആപ്പിൽ ബന്ധപ്പെടുക' : 'Contact on WhatsApp'}
+            </CTAButton>
+            <CTAButton
+              href={`tel:${business.contact.phone}`}
+              variant="phone"
+            >
+              {locale === 'ml' ? 'ഇപ്പോൾ വിളിക്കുക' : 'Call Now'}
+            </CTAButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

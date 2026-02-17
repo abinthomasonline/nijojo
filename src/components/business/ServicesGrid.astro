@@ -1,0 +1,36 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import type { Service } from '../../types/business';
+
+interface Props {
+  services: Service[];
+  businessSlug: string;
+  locale?: string;
+}
+
+const { services, businessSlug, locale = 'en' } = Astro.props;
+---
+
+<div class="bg-gradient-to-b from-white to-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
+        Our Services
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-4"></div>
+      <p class="mt-4 text-xl text-gray-700 max-w-2xl mx-auto">
+        Comprehensive services to meet all your needs
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map(service => (
+        <ServiceCard
+          service={service}
+          businessSlug={businessSlug}
+          locale={locale}
+        />
+      ))}
+    </div>
+  </div>
+</div>
