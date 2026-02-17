@@ -37,7 +37,7 @@ export const insuranceConfigMl: BusinessConfig = {
     whatsapp: '+91 9847461054',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.360576988547!2d76.6129526!3d10.0695122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e67404c26b6f%3A0xf3d10bb70076eaff!2sThottiyil%20Plaza%2C%20Thankalam%20Thrikkariyoor%20Road%2C%20Thankalam%2C%20Kothamangalam%2C%20Kerala%20686666!5e0!3m2!1sen!2sin!4v1750848348597!5m2!1sen!2sin',
     workingHours: 'തിങ്കൾ - ശനി: രാവിലെ 9:00 മുതൽ വൈകിട്ട് 6:00 വരെ',
-    facebook: 'https://www.facebook.com/people/E-mithram-Online-service-centre-College-Junction-Kothamangalam/61576044371328'
+    facebook: 'https://www.facebook.com/profile.php?id=61578747995052'
   },
   social: {},
   sections: [

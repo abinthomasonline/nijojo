@@ -21,7 +21,7 @@ export const personInfoMl: PersonInfo = {
   },
   social: {
     linkedin: '',
-    facebook: 'https://www.facebook.com/people/E-mithram-Online-service-centre-College-Junction-Kothamangalam/61576044371328',
+    facebook: 'https://www.facebook.com/profile.php?id=61578747995052',
     twitter: '',
   },
 };
