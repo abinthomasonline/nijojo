@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { businesses } from '../../config/site';
+import { withLocale } from '../../utils/url';
 
 interface Props {
   currentPath: string;
@@ -9,7 +10,7 @@ interface Props {
 
 const { currentPath, locale = 'en' } = Astro.props;
 
-const homeUrl = locale === 'en' ? '/' : `/${locale}`;
+const homeUrl = withLocale('/', locale);
 ---
 
 <nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-primary/10">
@@ -36,7 +37,7 @@ const homeUrl = locale === 'en' ? '/' : `/${locale}`;
         </a>
 
         {businesses.map(business => {
-          const businessUrl = locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`;
+          const businessUrl = withLocale(`/${business.slug}`, locale);
           const isActive = currentPath.includes(`/${business.slug}`);
 
           return (
@@ -90,7 +91,7 @@ const homeUrl = locale === 'en' ? '/' : `/${locale}`;
       </a>
 
       {businesses.map(business => {
-        const businessUrl = locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`;
+        const businessUrl = withLocale(`/${business.slug}`, locale);
         const isActive = currentPath.includes(`/${business.slug}`);
 
         return (

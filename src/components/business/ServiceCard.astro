@@ -1,5 +1,6 @@
 ---
 import type { Service } from '../../types/business';
+import { withLocale } from '../../utils/url';
 
 interface Props {
   service: Service;
@@ -9,9 +10,7 @@ interface Props {
 
 const { service, businessSlug, locale = 'en' } = Astro.props;
 
-const serviceUrl = locale === 'en'
-  ? `/${businessSlug}/services/${service.slug}`
-  : `/${locale}/${businessSlug}/services/${service.slug}`;
+const serviceUrl = withLocale(`/${businessSlug}/services/${service.slug}`, locale);
 ---
 
 <a

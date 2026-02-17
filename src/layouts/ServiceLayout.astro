@@ -4,6 +4,7 @@ import Navigation from '../components/shared/Navigation.astro';
 import CTAButton from '../components/shared/CTAButton.astro';
 import type { Service, BusinessConfig } from '../types/business';
 import type { StructuredData } from '../types/seo';
+import { withLocale } from '../utils/url';
 
 interface Props {
   service: Service;
@@ -45,7 +46,7 @@ const structuredData: StructuredData = {
     <div class="bg-primary text-white py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <a
-          href={locale === 'en' ? `/${business.slug}` : `/${locale}/${business.slug}`}
+          href={withLocale(`/${business.slug}`, locale)}
           class="inline-flex items-center text-white hover:text-secondary mb-4 transition-colors font-semibold"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

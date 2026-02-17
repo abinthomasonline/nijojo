@@ -1,4 +1,6 @@
 ---
+import { withLocale } from '../../utils/url';
+
 interface Props {
   name: string;
   slug: string;
@@ -8,7 +10,7 @@ interface Props {
 
 const { name, slug, shortDescription, locale = 'en' } = Astro.props;
 
-const businessUrl = locale === 'en' ? `/${slug}` : `/${locale}/${slug}`;
+const businessUrl = withLocale(`/${slug}`, locale);
 ---
 
 <a
