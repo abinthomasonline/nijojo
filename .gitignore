@@ -20,5 +20,19 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# IDE
+.vscode/
+.idea/
+
+# Development files
+legacy-code/
+*.py
+malayalam-translations*.json
+prompt.txt
+IMPLEMENTATION.md
+QUICKSTART.md
+STYLING_IMPROVEMENTS.md
+VISIBILITY_FIXES.md
+
 # jetbrains setting folder
 .idea/
