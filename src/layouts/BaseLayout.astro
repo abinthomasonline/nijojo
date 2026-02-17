@@ -39,9 +39,9 @@ const alternateUrl = locale === 'en'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
-    <link rel="icon" type="image/png" sizes="32x32" href={`${baseUrl}favicon-32x32.png`} />
-    <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl}apple-touch-icon.png`} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl.replace(/\/$/, '')}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${baseUrl.replace(/\/$/, '')}/favicon-32x32.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl.replace(/\/$/, '')}/apple-touch-icon.png`} />
 
     <meta name="generator" content={Astro.generator} />
 
