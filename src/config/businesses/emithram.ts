@@ -103,9 +103,9 @@ export const emithramConfig: BusinessConfig = {
   contact: {
     phone: '+91 9847461054',
     email: 'emithramthankalam@gmail.com',
-    address: 'Thottyil Building, Near Auto Stand, Thankalam, Kothamangalam, Ernakulam, Kerala 686692',
+    address: 'Universal Tax Solution, College Junction, Opposite M A College Road, Kothamangalam, Ernakulam, Kerala 686691',
     whatsapp: '+91 9847461054',
-    mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.360576988547!2d76.6129526!3d10.0695122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e67404c26b6f%3A0xf3d10bb70076eaff!2sThottiyil%20Plaza%2C%20Thankalam%20Thrikkariyoor%20Road%2C%20Thankalam%2C%20Kothamangalam%2C%20Kerala%20686666!5e0!3m2!1sen!2sin!4v1750848348597!5m2!1sen!2sin',
+    mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d245.5315363594831!2d76.61586535882225!3d10.057677665409173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1771388163148!5m2!1sen!2sin',
     workingHours: 'Monday - Saturday: 9:00 AM - 6:00 PM',
     facebook: 'https://www.facebook.com/profile.php?id=61578747995052'
   },

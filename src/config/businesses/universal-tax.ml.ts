@@ -96,9 +96,9 @@ export const universalTaxConfigMl: BusinessConfig = {
   contact: {
     phone: '+91 9847461054',
     email: 'emithramthankalam@gmail.com',
-    address: 'തോട്ടിയിൽ ബിൽഡിംഗ്, ഓട്ടോ സ്റ്റാൻഡിന് സമീപം, തങ്കളം, കോതമംഗലം, എറണാകുളം, കേരളം 686692',
+    address: 'യൂണിവേഴ്സൽ ടാക്സ് സൊല്യൂഷൻ, കോളേജ് ജംഗ്ഷൻ, എം എ കോളേജ് റോഡിന് എതിർവശം, കോതമംഗലം, എറണാകുളം, കേരളം 686691',
     whatsapp: '+91 9847461054',
-    mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.360576988547!2d76.6129526!3d10.0695122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e67404c26b6f%3A0xf3d10bb70076eaff!2sThottiyil%20Plaza%2C%20Thankalam%20Thrikkariyoor%20Road%2C%20Thankalam%2C%20Kothamangalam%2C%20Kerala%20686666!5e0!3m2!1sen!2sin!4v1750848348597!5m2!1sen!2sin',
+    mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d245.5315363594831!2d76.61586535882225!3d10.057677665409173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1771388163148!5m2!1sen!2sin',
     workingHours: 'തിങ്കൾ - ശനി: രാവിലെ 9:00 മുതൽ വൈകിട്ട് 6:00 വരെ',
     facebook: 'https://www.facebook.com/profile.php?id=61578747995052'
   },
