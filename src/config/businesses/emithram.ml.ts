@@ -5,7 +5,7 @@ export const emithramConfigMl: BusinessConfig = {
   name: 'ഇ-മിത്രം',
   tagline: 'നിങ്ങളുടെ വിശ്വസനീയ ഡിജിറ്റൽ സേവന പങ്കാളി',
   description: 'കോതമംഗലത്ത് വിശ്വസനീയവും കാര്യക്ഷമവുമായ ഡിജിറ്റൽ സേവനങ്ങൾ. സർക്കാർ മുതൽ സ്വകാര്യ സേവനങ്ങൾ വരെ ശ്രദ്ധയോടും പ്രൊഫഷണലിസത്തോടും കൂടി കൈകാര്യം ചെയ്യുന്നു.',
-  logo: '/images/emithram-logo.png',
+  logo: '/images/emithram-logo.webp',
   heroImage: '/images/emithram-hero.jpg',
   ogImage: '/images/og-emithram.jpg',
   services: [

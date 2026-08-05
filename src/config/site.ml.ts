@@ -12,7 +12,7 @@ export const personInfoMl: PersonInfo = {
   name: 'നിജോ ജോണി',
   title: 'ഇ-ഗവേണൻസ്, നികുതി & ഇൻഷുറൻസ് സേവനങ്ങൾ',
   bio: 'ഇ-ഗവേണൻസ്, നികുതി, ഇൻഷുറൻസ് മേഖലകളിൽ വ്യക്തികൾക്കും സ്ഥാപനങ്ങൾക്കും വ്യക്തതയോടും വിശ്വാസത്തോടും കൂടിയ സേവനം നൽകുന്നു.',
-  photo: '/images/nijo-johny.jpg',
+  photo: '/images/nijo-johny-768.webp',
   contact: {
     phone: '+91 9847461054',
     email: 'emithramthankalam@gmail.com',

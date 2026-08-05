@@ -5,7 +5,7 @@ export const universalTaxConfig: BusinessConfig = {
   name: 'Universal Tax',
   tagline: 'Comprehensive Tax, Compliance, and Financial Solutions for Individuals and Businesses',
   description: 'At Universal Tax Solutions, we provide end-to-end support for tax filing, statutory compliance, accounting, and business registrations. Our goal is to simplify complex regulations, ensure timely compliance, and help you focus on growing your business with confidence.',
-  logo: '/images/universal-tax-logo.png',
+  logo: '/images/universal-tax-logo.webp',
   heroImage: '/images/universal-tax-hero.jpg',
   ogImage: '/images/og-universal-tax.jpg',
   services: [

@@ -5,7 +5,7 @@ export const universalTaxConfigMl: BusinessConfig = {
   name: 'യൂണിവേഴ്സൽ ടാക്സ്',
   tagline: 'വ്യക്തികൾക്കും സ്ഥാപനങ്ങൾക്കും സമഗ്ര നികുതി & സാമ്പത്തിക പരിഹാരങ്ങൾ',
   description: 'നികുതി ഫയലിംഗ്, നിയമാനുസരണം, അക്കൗണ്ടിംഗ്, ബിസിനസ് രജിസ്ട്രേഷൻ എന്നിവയിൽ സമഗ്ര സേവനം. നിയമങ്ങൾ ലളിതമാക്കി സമയബന്ധിതമായ അനുസരണം ഉറപ്പാക്കുന്നു.',
-  logo: '/images/universal-tax-logo.png',
+  logo: '/images/universal-tax-logo.webp',
   heroImage: '/images/universal-tax-hero.jpg',
   ogImage: '/images/og-universal-tax.jpg',
   services: [

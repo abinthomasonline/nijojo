@@ -20,7 +20,13 @@ const baseUrl = import.meta.env.BASE_URL;
           {person.photo ? (
             <img
               src={person.photo.startsWith('/') ? `${baseUrl.replace(/\/$/, '')}${person.photo}` : `${baseUrl}${person.photo}`}
+              srcset={`${baseUrl.replace(/\/$/, '')}/images/nijo-johny-384.webp 384w, ${baseUrl.replace(/\/$/, '')}/images/nijo-johny-768.webp 768w`}
+              sizes="(min-width: 1024px) 448px, calc(100vw - 32px)"
               alt={person.name}
+              width="768"
+              height="768"
+              fetchpriority="high"
+              decoding="async"
               class="rounded-lg shadow-2xl w-full max-w-md border-4 border-white/20"
             />
           ) : (

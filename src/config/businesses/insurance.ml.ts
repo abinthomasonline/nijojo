@@ -5,7 +5,7 @@ export const insuranceConfigMl: BusinessConfig = {
   name: 'ഇൻഷുറൻസ് സേവനങ്ങൾ',
   tagline: 'നിങ്ങൾക്കു പ്രധാനപ്പെട്ടതെല്ലാം സംരക്ഷിക്കുന്ന സമഗ്ര ഇൻഷുറൻസ് പരിഹാരങ്ങൾ',
   description: 'ജീവൻ, ആരോഗ്യവും സ്വത്തുക്കളും സുരക്ഷിതമാക്കാൻ വിശ്വസനീയ ഇൻഷുറൻസ് മാർഗ്ഗനിർദേശം. നിങ്ങളുടെ ആവശ്യങ്ങൾക്കനുസരിച്ച് ശരിയായ പോളിസി തിരഞ്ഞെടുക്കാൻ സഹായിക്കുന്നു.',
-  logo: '/images/insurance-logo.png',
+  logo: '/images/insurance-logo.webp',
   heroImage: '/images/insurance-hero.jpg',
   ogImage: '/images/og-insurance.jpg',
   services: [

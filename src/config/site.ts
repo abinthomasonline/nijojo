@@ -12,7 +12,7 @@ export const personInfo: PersonInfo = {
   name: 'Nijo Johny',
   title: 'E-Governance, Tax, and Insurance Solutions',
   bio: 'I help individuals and businesses navigate e-governance, taxation, and insurance with clarity, trust, and professionalism.',
-  photo: '/images/nijo-johny.jpg',
+  photo: '/images/nijo-johny-768.webp',
   contact: {
     phone: '+91 9847461054',
     email: 'emithramthankalam@gmail.com',
