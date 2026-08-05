@@ -14,34 +14,86 @@ interface Props {
 
 const { service, business, locale = 'en' } = Astro.props;
 
+const siteUrl = Astro.site ?? new URL('https://nijojohny.com');
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+const businessPath = locale === 'ml' ? `/ml/${business.slug}/` : `/${business.slug}/`;
+const businessUrl = new URL(businessPath, siteUrl).href;
+const homeUrl = new URL(locale === 'ml' ? '/ml/' : '/', siteUrl).href;
+const title = locale === 'ml'
+  ? `${service.title} | ${business.name}, കോതമംഗലം`
+  : `${service.title} in Kothamangalam | ${business.name}`;
+const description = locale === 'ml'
+  ? `${service.description} കോതമംഗലത്ത് ${business.name} വഴി ലഭ്യമാണ്.`
+  : `${service.description} Available from ${business.name} in Kothamangalam, Kerala.`;
+
 // Generate structured data for Service
-const structuredData: StructuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  'name': service.title,
-  'description': service.description,
-  'provider': {
-    '@type': 'LocalBusiness',
-    'name': business.name,
-    'telephone': business.contact.phone,
-    'address': business.contact.address
+const structuredData: StructuredData[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${pageUrl}#service`,
+    'url': pageUrl,
+    'name': service.title,
+    'serviceType': service.title,
+    'description': service.description,
+    'provider': {
+      '@type': 'LocalBusiness',
+      '@id': `${new URL(`/${business.slug}/`, siteUrl).href}#business`,
+      'name': business.name,
+      'url': businessUrl,
+      'telephone': business.contact.phone,
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': business.contact.address,
+        'addressLocality': 'Kothamangalam',
+        'addressRegion': 'Kerala',
+        'postalCode': '686691',
+        'addressCountry': 'IN'
+      }
+    },
+    'areaServed': {
+      '@type': 'City',
+      'name': 'Kothamangalam'
+    }
   },
-  'areaServed': {
-    '@type': 'City',
-    'name': 'Kothamangalam'
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': locale === 'ml' ? 'ഹോം' : 'Home',
+        'item': homeUrl
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': business.name,
+        'item': businessUrl
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': service.title,
+        'item': pageUrl
+      }
+    ]
   }
-};
+];
 ---
 
 <BaseLayout
-  title={`${service.title} - ${business.name}`}
-  description={service.description}
+  title={title}
+  description={description}
   locale={locale}
   structuredData={structuredData}
+  ogImage={business.ogImage || business.heroImage || business.logo}
+  ogImageAlt={`${service.title} — ${business.name}`}
 >
   <Navigation currentPath={Astro.url.pathname} locale={locale} />
 
-  <div class="min-h-screen bg-gray-50">
+  <main class="min-h-screen bg-gray-50">
     <!-- Header -->
     <div class="bg-primary text-white py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,5 +147,5 @@ const structuredData: StructuredData = {
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </BaseLayout>

@@ -7,6 +7,7 @@ export const emithramConfig: BusinessConfig = {
   description: 'Reliable and efficient digital services in Kothamangalam. From government to private, we take care of everything with attention and professionalism.',
   logo: '/images/emithram-logo.png',
   heroImage: '/images/emithram-hero.jpg',
+  ogImage: '/images/og-emithram.jpg',
   services: [
     {
       slug: 'passport-services',

@@ -30,6 +30,7 @@ export interface BusinessConfig {
   description: string;
   logo?: string;
   heroImage?: string;
+  ogImage?: string;
   services: Service[];
   contact: ContactInfo;
   social?: {

@@ -2,7 +2,7 @@ import type { PersonInfo } from '../types/business';
 
 export const siteConfig = {
   name: 'നിജോ ജോണി',
-  url: 'https://nijojo.com',
+  url: 'https://nijojohny.com',
   description: 'നിജോ ജോണിയുടെ പേഴ്സണൽ ബ്രാൻഡും ബിസിനസ്സ് ഹബും',
   defaultLocale: 'en',
   locales: ['en', 'ml'],

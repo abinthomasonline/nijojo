@@ -12,9 +12,10 @@ const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '');
 export function withBase(path: string): string {
   // Remove leading slash if present
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const pagePath = cleanPath.endsWith('/') ? cleanPath : `${cleanPath}/`;
 
   // Return base + path
-  return BASE_URL ? `${BASE_URL}${cleanPath}` : cleanPath;
+  return BASE_URL ? `${BASE_URL}${pagePath}` : pagePath;
 }
 
 /**

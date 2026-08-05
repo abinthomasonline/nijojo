@@ -1,57 +1,66 @@
 import type { APIRoute } from 'astro';
-import { getAllBusinessConfigs } from '../utils/getBusinessConfig';
+import { getAllBusinessConfigs, getBusinessConfig } from '../utils/getBusinessConfig';
 
-const SITE_URL = 'https://nijojo.com';
-const LOCALES = ['en', 'ml'];
+interface LocalizedPage {
+  en: string;
+  ml: string;
+}
 
-export const GET: APIRoute = async () => {
-  const businesses = getAllBusinessConfigs();
+function toAbsoluteUrl(path: string, siteUrl: URL): string {
+  return new URL(path, siteUrl).href;
+}
 
-  // Generate URLs for all pages
-  const urls: Array<{ loc: string; priority: number }> = [];
+function escapeXml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+}
 
-  // Homepage
-  urls.push({ loc: `${SITE_URL}/`, priority: 1.0 });
-  urls.push({ loc: `${SITE_URL}/ml`, priority: 1.0 });
+export const GET: APIRoute = ({ site }) => {
+  const siteUrl = site ?? new URL('https://nijojohny.com');
+  const pages: LocalizedPage[] = [{ en: '/', ml: '/ml/' }];
 
-  // Business pages
-  businesses.forEach(business => {
-    // English
-    urls.push({
-      loc: `${SITE_URL}/${business.slug}`,
-      priority: 0.8
+  getAllBusinessConfigs('en').forEach((business) => {
+    const malayalamBusiness = getBusinessConfig(business.slug, 'ml');
+    if (!malayalamBusiness) return;
+
+    pages.push({
+      en: `/${business.slug}/`,
+      ml: `/ml/${malayalamBusiness.slug}/`
     });
 
-    // Malayalam
-    urls.push({
-      loc: `${SITE_URL}/ml/${business.slug}`,
-      priority: 0.8
-    });
+    business.services.forEach((service) => {
+      const malayalamService = malayalamBusiness.services.find(({ slug }) => slug === service.slug);
+      if (!malayalamService) return;
 
-    // Service pages
-    business.services.forEach(service => {
-      // English
-      urls.push({
-        loc: `${SITE_URL}/${business.slug}/services/${service.slug}`,
-        priority: 0.6
-      });
-
-      // Malayalam
-      urls.push({
-        loc: `${SITE_URL}/ml/${business.slug}/services/${service.slug}`,
-        priority: 0.6
+      pages.push({
+        en: `/${business.slug}/services/${service.slug}/`,
+        ml: `/ml/${malayalamBusiness.slug}/services/${malayalamService.slug}/`
       });
     });
   });
 
-  // Generate sitemap XML
+  const entries = pages.flatMap((page) => [
+    { path: page.en, alternate: page },
+    { path: page.ml, alternate: page }
+  ]);
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(url => `  <url>
-    <loc>${url.loc}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>${url.priority}</priority>
-  </url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.map(({ path, alternate }) => {
+    const englishUrl = escapeXml(toAbsoluteUrl(alternate.en, siteUrl));
+    const malayalamUrl = escapeXml(toAbsoluteUrl(alternate.ml, siteUrl));
+
+    return `  <url>
+    <loc>${escapeXml(toAbsoluteUrl(path, siteUrl))}</loc>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="${englishUrl}" />
+    <xhtml:link rel="alternate" hreflang="ml-IN" href="${malayalamUrl}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${englishUrl}" />
+  </url>`;
+  }).join('\n')}
 </urlset>`;
 
   return new Response(sitemap, {

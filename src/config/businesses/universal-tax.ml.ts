@@ -7,6 +7,7 @@ export const universalTaxConfigMl: BusinessConfig = {
   description: 'നികുതി ഫയലിംഗ്, നിയമാനുസരണം, അക്കൗണ്ടിംഗ്, ബിസിനസ് രജിസ്ട്രേഷൻ എന്നിവയിൽ സമഗ്ര സേവനം. നിയമങ്ങൾ ലളിതമാക്കി സമയബന്ധിതമായ അനുസരണം ഉറപ്പാക്കുന്നു.',
   logo: '/images/universal-tax-logo.png',
   heroImage: '/images/universal-tax-hero.jpg',
+  ogImage: '/images/og-universal-tax.jpg',
   services: [
     {
       slug: 'gst-registration',

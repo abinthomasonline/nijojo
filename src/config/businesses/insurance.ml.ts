@@ -7,6 +7,7 @@ export const insuranceConfigMl: BusinessConfig = {
   description: 'ജീവൻ, ആരോഗ്യവും സ്വത്തുക്കളും സുരക്ഷിതമാക്കാൻ വിശ്വസനീയ ഇൻഷുറൻസ് മാർഗ്ഗനിർദേശം. നിങ്ങളുടെ ആവശ്യങ്ങൾക്കനുസരിച്ച് ശരിയായ പോളിസി തിരഞ്ഞെടുക്കാൻ സഹായിക്കുന്നു.',
   logo: '/images/insurance-logo.png',
   heroImage: '/images/insurance-hero.jpg',
+  ogImage: '/images/og-insurance.jpg',
   services: [
     {
       slug: 'life-insurance-lic',

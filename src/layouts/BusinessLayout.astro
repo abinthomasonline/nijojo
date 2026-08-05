@@ -20,41 +20,99 @@ const sortedSections = [...config.sections]
   .filter(section => section.enabled)
   .sort((a, b) => a.order - b.order);
 
+const siteUrl = Astro.site ?? new URL('https://nijojohny.com');
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = new URL(config.ogImage || config.heroImage || config.logo || '/images/og-nijo-johny.jpg', siteUrl).href;
+const socialProfiles = [...new Set([
+  config.social?.facebook,
+  config.social?.instagram,
+  config.social?.linkedin,
+  config.contact.facebook
+].filter((profile): profile is string => Boolean(profile)))];
+const includeFacebookSdk = sortedSections.some(section => (
+  section.type === 'facebook' && Boolean(config.social?.facebook)
+));
+
+const seoByLocale: Record<string, Record<string, { title: string; description: string }>> = {
+  en: {
+    emithram: {
+      title: 'e-Mithram | Digital & Government Services in Kothamangalam',
+      description: 'Passport, PAN card, certificate, bill payment, and other digital service assistance from e-Mithram in Kothamangalam, Kerala.'
+    },
+    'universal-tax': {
+      title: 'Universal Tax | Tax & Accounting Services in Kothamangalam',
+      description: 'GST, income tax, accounting, bookkeeping, registration, and compliance support from Universal Tax in Kothamangalam, Kerala.'
+    },
+    insurance: {
+      title: 'Insurance Services | Life, Health & Motor Cover in Kothamangalam',
+      description: 'Personal guidance for LIC life, health, and motor insurance policies, renewals, and claims in Kothamangalam, Kerala.'
+    }
+  },
+  ml: {
+    emithram: {
+      title: 'ഇ-മിത്രം | കോതമംഗലത്തെ ഡിജിറ്റൽ & സർക്കാർ സേവനങ്ങൾ',
+      description: 'പാസ്പോർട്ട്, പാൻ കാർഡ്, സർട്ടിഫിക്കറ്റ്, ബിൽ പേയ്‌മെന്റ് തുടങ്ങിയ ഡിജിറ്റൽ സേവനങ്ങൾക്ക് കോതമംഗലത്തെ ഇ-മിത്രത്തിന്റെ സഹായം.'
+    },
+    'universal-tax': {
+      title: 'യൂണിവേഴ്സൽ ടാക്സ് | കോതമംഗലത്തെ നികുതി & അക്കൗണ്ടിംഗ് സേവനങ്ങൾ',
+      description: 'GST, ഇൻകം ടാക്സ്, അക്കൗണ്ടിംഗ്, ബുക്ക് കീപ്പിംഗ്, രജിസ്ട്രേഷൻ, കംപ്ലയൻസ് സേവനങ്ങൾ കോതമംഗലത്ത്.'
+    },
+    insurance: {
+      title: 'ഇൻഷുറൻസ് സേവനങ്ങൾ | കോതമംഗലത്ത് ലൈഫ്, ഹെൽത്ത് & മോട്ടോർ ഇൻഷുറൻസ്',
+      description: 'കോതമംഗലത്ത് LIC ലൈഫ്, ഹെൽത്ത്, മോട്ടോർ ഇൻഷുറൻസ് പോളിസികൾ, പുതുക്കൽ, ക്ലെയിം എന്നിവയ്ക്ക് വ്യക്തിഗത സഹായം.'
+    }
+  }
+};
+const seo = seoByLocale[locale]?.[config.slug] ?? {
+  title: `${config.name} | ${config.tagline}`,
+  description: config.description
+};
+
 // Generate structured data for LocalBusiness
 const structuredData: StructuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `${new URL(`/${config.slug}/`, siteUrl).href}#business`,
   'name': config.name,
   'description': config.description,
+  'url': pageUrl,
+  'image': imageUrl,
   'address': {
     '@type': 'PostalAddress',
-    'streetAddress': config.contact.address.split(',')[0],
+    'streetAddress': config.contact.address,
     'addressLocality': 'Kothamangalam',
     'addressRegion': 'Kerala',
+    'postalCode': '686691',
     'addressCountry': 'IN'
   },
   'telephone': config.contact.phone,
   'email': config.contact.email,
-  'url': `https://nijojo.com/${config.slug}`,
   ...(config.contact.workingHours && {
-    'openingHours': config.contact.workingHours
+    'openingHoursSpecification': {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      'opens': '09:00',
+      'closes': '18:00'
+    }
   }),
-  ...(config.social?.facebook && {
-    'sameAs': [config.social.facebook]
+  ...(socialProfiles.length > 0 && {
+    'sameAs': socialProfiles
   })
 };
 ---
 
 <BaseLayout
-  title={`${config.name} - ${config.tagline}`}
-  description={config.description}
+  title={seo.title}
+  description={seo.description}
   locale={locale}
   structuredData={structuredData}
-  ogImage={config.heroImage || config.logo}
+  ogImage={config.ogImage || config.heroImage || config.logo}
+  ogImageAlt={`${config.name} — ${config.tagline}`}
+  includeFacebookSdk={includeFacebookSdk}
 >
   <Navigation currentPath={Astro.url.pathname} locale={locale} />
 
-  <div class="min-h-screen bg-gray-50">
+  <main class="min-h-screen bg-gray-50">
     {sortedSections.map(section => {
       switch (section.type) {
         case 'hero':
@@ -103,5 +161,5 @@ const structuredData: StructuredData = {
           return null;
       }
     })}
-  </div>
+  </main>
 </BaseLayout>

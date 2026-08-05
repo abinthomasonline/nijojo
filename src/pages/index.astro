@@ -7,44 +7,67 @@ import { personInfo, businesses } from '../config/site';
 import type { StructuredData } from '../types/seo';
 
 const locale = 'en';
+const siteUrl = Astro.site ?? new URL('https://nijojohny.com');
+const title = `${personInfo.name} | E-Governance, Tax & Insurance in Kothamangalam`;
+const description = 'E-governance, tax, accounting, and insurance support from Nijo Johny in Kothamangalam, Kerala.';
+const socialProfiles = Object.values(personInfo.social ?? {}).filter(Boolean);
 
-// Generate structured data for Person
-const structuredData: StructuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  'name': personInfo.name,
-  'jobTitle': personInfo.title,
-  'description': personInfo.bio,
-  'telephone': personInfo.contact.phone,
-  'email': personInfo.contact.email,
-  'address': {
-    '@type': 'PostalAddress',
-    'addressLocality': 'Kothamangalam',
-    'addressRegion': 'Kerala',
-    'addressCountry': 'IN'
+const structuredData: StructuredData[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl.href}#website`,
+    'url': siteUrl.href,
+    'name': 'Nijo Johny',
+    'description': description,
+    'inLanguage': ['en-IN', 'ml-IN']
   },
-  'owns': businesses.map(business => ({
-    '@type': 'Organization',
-    'name': business.name,
-    'url': `https://nijojo.com/${business.slug}`
-  }))
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${siteUrl.href}#person`,
+    'name': personInfo.name,
+    'url': siteUrl.href,
+    'image': new URL(personInfo.photo || '/images/nijo-johny.jpg', siteUrl).href,
+    'jobTitle': personInfo.title,
+    'description': personInfo.bio,
+    'telephone': personInfo.contact.phone,
+    'email': personInfo.contact.email,
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': 'Kothamangalam',
+      'addressRegion': 'Kerala',
+      'addressCountry': 'IN'
+    },
+    ...(socialProfiles.length > 0 && { 'sameAs': socialProfiles }),
+    'owns': businesses.map(business => ({
+      '@type': 'Organization',
+      '@id': `${new URL(`/${business.slug}/`, siteUrl).href}#business`,
+      'name': business.name,
+      'url': new URL(`/${business.slug}/`, siteUrl).href
+    }))
+  }
+];
 ---
 
 <HomeLayout
-  title={`${personInfo.name} - ${personInfo.title}`}
-  description={personInfo.bio}
+  title={title}
+  description={description}
   locale={locale}
   structuredData={structuredData}
+  ogImage="/images/og-nijo-johny.jpg"
+  ogImageAlt="Nijo Johny — e-governance, tax, and insurance services in Kothamangalam"
 >
   <!-- Navigation -->
   <Navigation currentPath="/" locale={locale} />
 
-  <!-- Personal Hero Section -->
-  <PersonalHero person={personInfo} locale={locale} />
+  <main>
+    <!-- Personal Hero Section -->
+    <PersonalHero person={personInfo} locale={locale} />
 
-  <!-- Business Grid Section -->
-  <BusinessGrid locale={locale} />
+    <!-- Business Grid Section -->
+    <BusinessGrid locale={locale} />
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gradient-to-b from-primary-dark to-black text-white py-12 border-t-4 border-secondary">

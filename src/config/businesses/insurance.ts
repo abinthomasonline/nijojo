@@ -7,6 +7,7 @@ export const insuranceConfig: BusinessConfig = {
   description: 'We provide trusted insurance guidance and policy support to help you secure your life, health, and assets. With personalized advice and end-to-end assistance, we ensure you choose the right coverage for your needs and long-term financial security.',
   logo: '/images/insurance-logo.png',
   heroImage: '/images/insurance-hero.jpg',
+  ogImage: '/images/og-insurance.jpg',
   services: [
     {
       slug: 'life-insurance-lic',

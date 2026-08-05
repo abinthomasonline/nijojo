@@ -7,9 +7,11 @@ interface Props {
   description: string;
   locale?: string;
   structuredData?: StructuredData | StructuredData[];
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { title, description, locale = 'en', structuredData } = Astro.props;
+const { title, description, locale = 'en', structuredData, ogImage, ogImageAlt } = Astro.props;
 ---
 
 <BaseLayout
@@ -17,6 +19,8 @@ const { title, description, locale = 'en', structuredData } = Astro.props;
   description={description}
   locale={locale}
   structuredData={structuredData}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
 >
   <slot />
 </BaseLayout>

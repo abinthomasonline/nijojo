@@ -7,6 +7,7 @@ export const universalTaxConfig: BusinessConfig = {
   description: 'At Universal Tax Solutions, we provide end-to-end support for tax filing, statutory compliance, accounting, and business registrations. Our goal is to simplify complex regulations, ensure timely compliance, and help you focus on growing your business with confidence.',
   logo: '/images/universal-tax-logo.png',
   heroImage: '/images/universal-tax-hero.jpg',
+  ogImage: '/images/og-universal-tax.jpg',
   services: [
     {
       slug: 'gst-registration',

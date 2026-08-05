@@ -7,12 +7,19 @@ import { personInfoMl as personInfo, businessesMl as businesses } from '../../co
 import type { StructuredData } from '../../types/seo';
 
 const locale = 'ml';
+const siteUrl = Astro.site ?? new URL('https://nijojohny.com');
+const title = `${personInfo.name} | കോതമംഗലത്തെ ഇ-ഗവേണൻസ്, നികുതി & ഇൻഷുറൻസ് സേവനങ്ങൾ`;
+const description = 'കോതമംഗലത്ത് ഇ-ഗവേണൻസ്, നികുതി, അക്കൗണ്ടിംഗ്, ഇൻഷുറൻസ് ആവശ്യങ്ങൾക്ക് നിജോ ജോണിയുടെ വിശ്വസനീയമായ സഹായം.';
+const socialProfiles = Object.values(personInfo.social ?? {}).filter(Boolean);
 
 // Generate structured data for Person
 const structuredData: StructuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${siteUrl.href}#person`,
   'name': personInfo.name,
+  'url': siteUrl.href,
+  'image': new URL(personInfo.photo || '/images/nijo-johny.jpg', siteUrl).href,
   'jobTitle': personInfo.title,
   'description': personInfo.bio,
   'telephone': personInfo.contact.phone,
@@ -23,28 +30,34 @@ const structuredData: StructuredData = {
     'addressRegion': 'Kerala',
     'addressCountry': 'IN'
   },
+  ...(socialProfiles.length > 0 && { 'sameAs': socialProfiles }),
   'owns': businesses.map(business => ({
     '@type': 'Organization',
+    '@id': `${new URL(`/${business.slug}/`, siteUrl).href}#business`,
     'name': business.name,
-    'url': `https://nijojo.com/${business.slug}`
+    'url': new URL(`/${business.slug}/`, siteUrl).href
   }))
 };
 ---
 
 <HomeLayout
-  title={`${personInfo.name} - ${personInfo.title}`}
-  description={personInfo.bio}
+  title={title}
+  description={description}
   locale={locale}
   structuredData={structuredData}
+  ogImage="/images/og-nijo-johny.jpg"
+  ogImageAlt="നിജോ ജോണി — കോതമംഗലത്തെ ഇ-ഗവേണൻസ്, നികുതി, ഇൻഷുറൻസ് സേവനങ്ങൾ"
 >
   <!-- Navigation -->
   <Navigation currentPath="/ml" locale={locale} />
 
-  <!-- Personal Hero Section -->
-  <PersonalHero person={personInfo} locale={locale} />
+  <main>
+    <!-- Personal Hero Section -->
+    <PersonalHero person={personInfo} locale={locale} />
 
-  <!-- Business Grid Section -->
-  <BusinessGrid locale={locale} />
+    <!-- Business Grid Section -->
+    <BusinessGrid locale={locale} />
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gradient-to-b from-primary-dark to-black text-white py-12 border-t-4 border-secondary">
